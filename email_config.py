@@ -22,5 +22,3 @@ def send_email(past_price,present_price, price_difference):
     text = msg.as_string()
     server.sendmail(sender_email,recipient_email, text)
     server.quit()
-
-# send_email(125,150)

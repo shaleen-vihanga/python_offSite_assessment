@@ -8,15 +8,17 @@ def price_alert(threshold=2.0):
         current_price = get_current_aapl_price()
     except Exception as e:
         print(f"Error fetching current price: {e}")
+        return
+    
     previous_price = get_past_aapl_price("stock_data.csv")
-    # return
     try:
         price_change = current_price - previous_price
     except Exception as e:
         print(f"Error fetching previous price from CSV: {e}")
-        # return
+        return
     
     price_change = current_price - previous_price
+    price_change = round(price_change,2)
 
     if abs(price_change) > threshold:
         try:
